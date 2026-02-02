@@ -1,3 +1,19 @@
+--bubblesort
+bubble :: Ord a => [a] -> [a]
+bubble [] = []
+bubble [x]= [x]
+bubble (x:y:xs)
+    | x > y     = y : bubble (x:xs)
+    | otherwise = x : bubble (y:xs)
+
+bubbleSort :: Ord a => [a] -> [a]
+bubbleSort [] = []
+bubbleSort [x] = [x]
+bubbleSort x
+    | x == y = x
+    | otherwise = bubbleSort y
+    where y = bubble x
+
 --returns true if the first argument is a prefix of the second and false otherwise
 isPrefix :: (Eq a) => [a] -> [a] -> Bool
 isPrefix [] _ = True
@@ -5,7 +21,6 @@ isPrefix _ [] = False
 isPrefix (x:xs) (y:ys)
   | x == y    = isPrefix xs ys
   | otherwise = False
-
 
 --returns true if the first argument is a substring of the second
 isSubstring :: String -> String -> Bool
